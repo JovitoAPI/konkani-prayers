@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Konkani Catholic Prayer Collection">
+    <meta name="theme-color" content="#2563eb">
+    <title>Konkani Prayers</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+    <div id="app"></div>
+
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed'));
+        }
+
+        const prayers = [
+            {
+                id: 1,
+                category: 'daily',
+                title: 'Santa Khursachi Kuru',
+                content: `Santa Khursache Kurve, Nivar amkam, amchea Deva, 
+Amcheam dusmanantle.
+Bapache ani Putache + ani Spirit Santache nanvim. Amen.
+Vo 
+fokot, Bapache ani Putache + ani Povitr Atmeache nanvi. Amen.`
+            },
+            {
+                id: 2,
+                category: 'daily',
+                title: 'Amchea Bapa',
+                content: `Amchea Bapa Sorginchea Tujem Nanv Povitr zaum.
+Tujem raj amkam ieum.
+Tuji khuxi sorgar zata toxi sonvsarant zaum.
+Amcho dispotto giras aiz amkam di.
+Ani ami amcher chukleleank bogxitanv,
+Toxem amchim patkam bhogos.
+Ani amkam tallnent poddunk diumnaka,
+Punn vaittantle nivar.`
+            },
+            {
+                id: 3,
+                category: 'daily',
+                title: 'Noman Marie',
+                content: `Noman Marie, Kurpen bhorlele,
+Sorvespor tuje thaim asa.
+Ostoream modem tum sodoiv,
+Ani sodoiv tuzo Put Jezu.
+Bhagevont Marie, Devache Maie,
+Amam papiam khatir vinoti kor,
+Atam ani amchea mornanchea velar. Amen.`
+            },
+            {
+                id: 4,
+                category: 'daily',
+                title: 'Mhoima Bapak',
+                content: `Mhoima Bapak, ani Putak ani Povitr Atmeak.
+Adim, atam ani sodam sodankal. Amen.`
+            },
+            {
+                id: 5,
+                category: 'daily',
+                title: 'Noman Rannie',
+                content: `Noman Rannie, kakutiche Maie,
+Tunch ghe amchem jivit, amrut ani bhorvanso.
+Ami pordexi Eve-chim ballkam Tuka ulo martanv,
+Hea dukhanchea khonndant suskar soddun, rudon korun, Maie Tuka prarth'tanv.
+Amcher, doiall Xeratini, Tuji kaklutichi nodor ghal.
+Tum konnvalle ani mogal, dulob Ankvar Marie, hea pordesa uprant:
+Tuzo Put Jezu amkam dakhoi.
+Bhagevont Devache Maie, amche khatir mag.
+Jezun bhasailam tem amkam favo zauncheak. Amen.`
+            },
+            {
+                id: 6,
+                category: 'daily',
+                title: 'Sothmanntam',
+                content: `Sotman'tam Devak, Sorvpodvedar Bapak, sorga ani prithumechea Rochnnarak,
+Ani Jezu Kristak, Tachea ekleach Putak amchea Somiak.
+To Povitr Atmea vorvim gorbim sombhovlo, Ankvar Marie thoun zolmolo.
+Pons Pilata khal Tannem koxtt sonsle, Taka Khursar zoddlo.
+To melo ani Taka nikhipilo, To mel'leam modem denvlo,
+Tisrea disa mel'leantlo jivont zalo.
+Sorgar choddlo, Sorvpodvedar Deva Bapachea uzveak bosla.
+Thuim thoun jiveam ani mel'leanchi mon'subi korunk ietolo.
+Sotman'tam Povitr Atmeak, Katholik Povitr Sobhek,
+Bhoktancho ektar, Patkanchem bhogsonnem,
+Kuddichem jivontponn, Sasnnachem jivit. Amen.`
+            },
+            {
+                id: 7,
+                category: 'daily',
+                title: 'Dukhichi Ucharnni',
+                content: `Deva, mhojea Bapa,
+Tum chodd boro ani mogall astanam
+Tujer, ani mhojeam bhavam bhoinnincher hanvem chuk keli.
+Dekhun mhaka vhodd khont bhogta
+Ani khaltea kallzan mhaka bhogos mhunn magtam.
+Tujeach addharacher patieun
+Novean patok korinam zauncheak, vavrunk hanv bhas ditam. Amen.`
+            },
+            {
+                id: 8,
+                category: 'special',
+                title: 'Fatima Prayer',
+                content: `"Jezu, amkam bhogos, 
+Nivar amkam, iemkonddachea ujeantlim,
+Vhor sorgar soglea ottmeank,
+Odhik korun chodd ghoroz asloleank"
+
+vo
+
+"Jezu, amkam amchim patkam bhogos,
+Iemkonddantlea ujeantlim amkam vattai,
+Soglleam atmeank sorgar pavoi,
+Odhik korun Tuje kakutichi chodd goroz asloleank."`
+            },
+            {
+                id: 9,
+                category: 'special',
+                title: 'Tersachem nimne magnnem',
+                content: `Bhou Povitr Trinidadi, Bapa, Putra ani Spirit Santa,  
+Sorpott poddun hanv tuka nomoskar kortam  
+Ani Tuka bhettoitam akhea sonvsarantleam tabernaklamnim  
+Astea Jezu Kristachi Kudd, Rogot, Otmo ani Devponn diuncheak  
+Farikponn bemananchem, sarkileanchem  
+Ani Tachea bhou Povitr Kallzachea ogonnit punneam khatir  
+Ani Moriechea khotavinn kallza vorvim  
+Babddeam patkeachem konversanv hanv porratun magtam.`
+            },
+            {
+                id: 10,
+                category: 'rosary',
+                title: 'Sontosache Mister (Joyful Mysteries)',
+                subtitle: 'Dor Somara ani Sonvarak',
+                content: `1️⃣ Gabriel Boddvean khobor dili  
+Devacho Put Tiche thaim mon'xeaponn ghetolo munn,  
+Ani Ti Ankvar astanam Povitr Atmeache podven ghorbest zali.
+
+2️⃣ Ankvar Mari ghorbest astana  
+Bhag Izabelik, aple mauxe-bhoinnik bhett korunk geli  
+Ani tiche thaim tin mhoine ravli.
+
+3️⃣ Ankvar Mari Ballka Jezuk porsutt zali  
+Belea xarant, gorvanchea gottean.
+
+4️⃣ Ankvar Marien Ballka Jezun vhelo  
+Ani bhettoilo Dev-templant and dilo Taka Bhag.  
+Simeanvanchea hatant, zannem taka vollkolo,  
+Sorga ani Sounsaracho Tarok mun.
+
+5️⃣ Ballok Jezu  
+Porbechea disa sanddlea uprant,  
+Tin dissanim Dev-templant meulo.`
+            },
+            {
+                id: 11,
+                category: 'rosary',
+                title: 'Dukhiche Mister (Sorrowful Mysteries)',
+                subtitle: 'Dor Munglara ani Sukrara',
+                content: `1️⃣ Somi Jezu Krist  
+Jetsemanichea molleant magnnem kortannam  
+Rogot humelo amcheam patkam passun.
+
+2️⃣ Pilatachea raz-angnnant  
+Somi Jezu Kristak eka khambeak bandhlo  
+Ani sobar ozar jerbond tacher marlet.
+
+3️⃣ Somia Jezuchea mostokar  
+Kantteancho mukutt ghatlo.
+
+4️⃣ Somi Jezu Krist choddlo  
+Kalvar dongrar gheun aplea khandar to bharadik Khuris.
+
+5️⃣ Somi Jezu Kristak zoddlo Khursar  
+Dogam choram modem sogle sobemazar  
+Ani Ankvar Marieche dixtti mukhar.`
+            },
+            {
+                id: 12,
+                category: 'rosary',
+                title: 'Orkache Mister (Glorious Mysteries)',
+                subtitle: 'Budvar ani Aitar',
+                content: `1️⃣ Somi Jezu Krist  
+Aplech podven tisrea disa meleleantlo jivont zalo.
+
+2️⃣ Somi Jezu Krist jivont zatoch  
+Challis disanim porzollit zaun sorgar choddlo.
+
+3️⃣ Somi Jezu Kristan  
+Sorgar vetoch pattoilo Povitr Atmeak  
+Cenakl mhonnlele suater, zhoi asle Apostl ani Ankvar Mari.
+
+4️⃣ Somi Jezuchea morna uprant  
+Ankvar Mariek sobar vorsamnim sorgar vheli.
+
+5️⃣ Bhov Povitr Tritven  
+Ankvar Marie-chea mostokar mukhutt ghatlo  
+Ani sorga ani sonvsarachi Ranni tika keli.`
+            },
+            {
+                id: 13,
+                category: 'rosary',
+                title: 'Uzvaddache Mister (Luminous Mysteries)',
+                subtitle: 'Brestar',
+                content: `1️⃣ Jordan nodint Povitr Snan  
+Krist udkant dhenvta, ek patok ollkhunk naslolo  
+To amche khatir "patok" zata.
+
+2️⃣ Kana ganvant Lognacho Dhobazo  
+Ledna Krist udok sorean bodolta  
+Ani xisanchim kallzam bhavartak ugtim korta.
+
+3️⃣ Devachea Rajeachi Porgottnni  
+Aple xikovnne vorvim Jezu ienvchem asa tem Devachem Raj porgot'ta,  
+Ani choloita kheritponnim Kumsarachea Sonskara vorvim.
+
+4️⃣ Tabor Dongrar Rupantor  
+Dev Bapacho voibhov Putachea mukhamollar porzollta.  
+Apostlank "Taka aikat" munn sangta.
+
+5️⃣ Misachea Bolidanachi Staphni  
+Zantunt Krist unddeachea ani soreachea rupan  
+Apli kudd ani rogot, jevonn koxem bhettoita.`
+            },
+            {
+                id: 14,
+                category: 'special',
+                title: 'Ughddas Dhor (Memorare)',
+                content: `Bhov konvalle Ankvar Marie, ughddas dhor,  
+konn tori tuzo asro gheunk dhanvlolo,  
+Tuzo adhar magunk ani Tuji mozot sodhunk gel'lo,  
+tujea hatantlo alaxiro ghenastana urla munn,  
+kednanch aikunk ieunk na.  
+
+Hea bhorvanxean ravun,  
+hanv tujea gopant dhanvun ietam,  
+Ankvarinche Ankvari, Maie mhoje,  
+Tuje sorxem hanv ietam,  
+hanv patki ani dukhest,  
+Tuje mukhar ubho (ubhi) ravtam.  
+
+Devachea Putache Maie,  
+mhojea magnneanchi beporva korum naka,  
+punn doia korun tem aikun ghe ani folladik kor.  
+
+Amen.`
+            },
+            {
+                id: 15,
+                category: 'litany',
+                title: 'Saibinnichi Ladain (Litany of the Blessed Virgin Mary)',
+                content: `Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor  
+Krista, amchi kaklut kor - Krista, amchi kaklut kor  
+Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor  
+Krista, amkam aik - Krista, doien amkam aik  
+
+Deva Sorginchea Bapa - Amchi kaklut kor  
+Deva Putra Sonvsarachea Sodvondara - Amchi kaklut kor  
+Deva Spirita Santa - Amchi kaklut kor  
+Santism Trinidadi Ekleach Deva - Amchi kaklut kor  
+
+Bhagevonti Marie - Amche passun mag  
+Bhagevonti Devache Maie - Amche passun mag  
+Bhagevonti Ankvarinche Ankvari - Amche passun mag  
+Kristache Maie - Amche passun mag  
+Povitr Sobheche Maie - Amche passun mag  
+Dev kurpeche Maie - Amche passun mag  
+Bhov nitoll Maie - Amche passun mag  
+Bhov nirmoll Maie - Amche passun mag`
+            },
+            {
+                id: 16,
+                category: 'home',
+                title: 'Ochorianche Saibinninchi Bhett (Home Visit)',
+                content: `Noman Saibinn Bhitor Sortanam  
+Eh dulobe ani mogall Maie, ailo amkam baguiacho vell polleunk Tuka amchea ghorant ani mandunk Tuka amche familintli koxi.  
+Ie bore baxen! Amchim kallzam khoxen murgot'tat geta astanam Tuji bhett; eh Boddveanche Rannie, mogache ani povitr borvanxeache Maie, ostream bhitor sodoiv!  
+Ani koso amkam meulo edo voddlo upkar? Koxem Tuka puttvolem, eh Sorguinche Suamini, eunk Tum hea amche itle kirkoll famili modem?  
+Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka assa, amcher tuzo axirvad ghalunk ani pettounk amchim kallzam mogacheam kirnanim, jim bhair sortat Tujeam atanchim.`
+            }
+        ];
+
+        const categories = [
+            { id: 'all', name: 'All Prayers' },
+            { id: 'daily', name: 'Daily Prayers' },
+            { id: 'rosary', name: 'Rosary Mysteries' },
+            { id: 'special', name: 'Special Prayers' },
+            { id: 'litany', name: 'Litany' },
+            { id: 'home', name: 'Home Blessings' }
+        ];
+
+        let selectedCategory = 'all';
+        let searchTerm = '';
+        let selectedPrayer = null;
+        let menuOpen = false;
+
+        function render() {
+            const filteredPrayers = prayers.filter(prayer => {
+                const matchesCategory = selectedCategory === 'all' || prayer.category === selectedCategory;
+                const matchesSearch = prayer.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                      prayer.content.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            const app = document.getElementById('app');
+            
+            if (selectedPrayer) {
+                app.innerHTML = `
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+                        <div class="max-w-4xl mx-auto px-4 py-6">
+                            <h1 class="text-2xl font-bold">Konkani Prayers</h1>
+                            <p class="text-blue-100 text-sm mt-1">Catholic Prayer Collection</p>
+                        </div>
+                    </div>
+                    <div class="max-w-4xl mx-auto px-4 py-8">
+                        <div class="bg-white rounded-xl shadow-lg p-6">
+                            <button onclick="closePrayer()" class="text-blue-600 hover:text-blue-700 font-medium mb-4">
+                                ← Back to prayers
+                            </button>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-2">${selectedPrayer.title}</h2>
+                            ${selectedPrayer.subtitle ? `<p class="text-gray-600 italic mb-4">${selectedPrayer.subtitle}</p>` : ''}
+                            <div class="prose max-w-none">
+                                <pre class="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed text-lg">${selectedPrayer.content}</pre>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                app.innerHTML = `
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+                        <div class="max-w-4xl mx-auto px-4 py-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h1 class="text-2xl font-bold">Konkani Prayers</h1>
+                                    <p class="text-blue-100 text-sm mt-1">Catholic Prayer Collection</p>
+                                </div>
+                                <button onclick="toggleMenu()" class="lg:hidden p-2 hover:bg-white/20 rounded-lg transition">
+                                    ${menuOpen ? '✕' : '☰'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="max-w-4xl mx-auto px-4 py-4">
+                        <div class="relative">
+                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <input
+                                type="text"
+                                placeholder="Search prayers..."
+                                value="${searchTerm}"
+                                oninput="updateSearch(this.value)"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto px-4 mb-6 ${menuOpen ? 'block' : 'hidden lg:block'}">
+                        <div class="flex flex-wrap gap-2">
+                            ${categories.map(cat => `
+                                <button
+                                    onclick="selectCategory('${cat.id}')"
+                                    class="px-4 py-2 rounded-lg transition ${
+                                        selectedCategory === cat.id
+                                            ? 'bg-blue-600 text-white shadow-md'
+                                            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                                    }"
+                                >
+                                    <span class="text-sm font-medium">${cat.name}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto px-4 pb-8">
+                        <div class="grid gap-4">
+                            ${filteredPrayers.length > 0 ? filteredPrayers.map(prayer => `
+                                <div
+                                    onclick="selectPrayer(${prayer.id})"
+                                    class="bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition cursor-pointer border border-gray-100"
+                                >
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">${prayer.title}</h3>
+                                    ${prayer.subtitle ? `<p class="text-sm text-gray-600 italic mb-2">${prayer.subtitle}</p>` : ''}
+                                    <p class="text-gray-600 text-sm line-clamp-2">${prayer.content}</p>
+                                    <div class="mt-3 text-blue-600 text-sm font-medium">Read more →</div>
+                                </div>
+                            `).join('') : `
+                                <div class="text-center py-12 text-gray-500">
+                                    <p>No prayers found matching your search.</p>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function selectCategory(cat) {
+            selectedCategory = cat;
+            menuOpen = false;
+            render();
+        }
+
+        function selectPrayer(id) {
+            selectedPrayer = prayers.find(p => p.id === id);
+            render();
+        }
+
+        function closePrayer() {
+            selectedPrayer = null;
+            render();
+        }
+
+        function updateSearch(value) {
+            searchTerm = value;
+            render();
+        }
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            render();
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
