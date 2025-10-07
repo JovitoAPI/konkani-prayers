@@ -4,20 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Konkani Catholic Prayer Collection">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#7c2d12">
     <title>Konkani Prayers</title>
     <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #450a0a 0%, #7c2d12 50%, #92400e 100%);
+            background-attachment: fixed;
+        }
+        .ornate-border {
+            border: 2px solid #d4af37;
+            background: linear-gradient(to bottom, #fffbeb, #fef3c7);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.5);
+        }
+        .gold-text {
+            color: #d4af37;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .prayer-card {
+            background: linear-gradient(to bottom, #fffef9, #fef9f3);
+            border: 3px solid #d4af37;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .prayer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top left, rgba(212,175,55,0.1), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(124,45,18,0.1), transparent 50%);
+            pointer-events: none;
+        }
+        .prayer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .cross-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .category-btn {
+            font-family: 'Cinzel', serif;
+            border: 2px solid #d4af37;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+        }
+        .category-btn:hover {
+            background: #d4af37;
+            color: #7c2d12;
+            transform: scale(1.05);
+        }
+        .category-btn.active {
+            background: linear-gradient(135deg, #d4af37, #f59e0b);
+            color: #450a0a;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(212,175,55,0.5);
+        }
+        .header-title {
+            font-family: 'Cinzel', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
         .line-clamp-2 {
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+        .search-input {
+            border: 2px solid #d4af37;
+            background: rgba(255,254,249,0.95);
+            font-family: 'Crimson Text', serif;
+        }
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.3);
+            border-color: #f59e0b;
+        }
+        .decorative-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #d4af37;
+        }
+        .decorative-corner.top-left {
+            top: -2px;
+            left: -2px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .decorative-corner.top-right {
+            top: -2px;
+            right: -2px;
+            border-left: none;
+            border-bottom: none;
+        }
+        .decorative-corner.bottom-left {
+            bottom: -2px;
+            left: -2px;
+            border-right: none;
+            border-top: none;
+        }
+        .decorative-corner.bottom-right {
+            bottom: -2px;
+            right: -2px;
+            border-left: none;
+            border-top: none;
+        }
+        .prayer-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #451a03;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+<body>
     <div id="app"></div>
 
     <script>
@@ -321,44 +431,52 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
             
             if (selectedPrayer) {
                 app.innerHTML = `
-                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
-                        <div class="max-w-4xl mx-auto px-4 py-6">
-                            <h1 class="text-2xl font-bold">Konkani Prayers</h1>
-                            <p class="text-blue-100 text-sm mt-1">Catholic Prayer Collection</p>
+                    <div style="background: linear-gradient(135deg, #450a0a 0%, #7c2d12 100%);" class="text-white shadow-2xl">
+                        <div class="max-w-4xl mx-auto px-4 py-8 text-center">
+                            <div class="cross-icon mb-3">✝</div>
+                            <h1 class="text-3xl font-bold header-title gold-text">Konkani Prayers</h1>
+                            <p class="text-amber-200 text-sm mt-2 italic">Catholic Prayer Collection</p>
                         </div>
                     </div>
                     <div class="max-w-4xl mx-auto px-4 py-8">
-                        <div class="bg-white rounded-xl shadow-lg p-6">
-                            <button onclick="closePrayer()" class="text-blue-600 hover:text-blue-700 font-medium mb-4">
+                        <div class="prayer-card rounded-lg p-8 relative">
+                            <div class="decorative-corner top-left"></div>
+                            <div class="decorative-corner top-right"></div>
+                            <div class="decorative-corner bottom-left"></div>
+                            <div class="decorative-corner bottom-right"></div>
+                            <button onclick="closePrayer()" class="mb-6 px-4 py-2 rounded border-2 border-amber-700 text-amber-900 hover:bg-amber-700 hover:text-white transition font-semibold">
                                 ← Back to prayers
                             </button>
-                            <h2 class="text-2xl font-bold text-gray-800 mb-2">${selectedPrayer.title}</h2>
-                            ${selectedPrayer.subtitle ? `<p class="text-gray-600 italic mb-4">${selectedPrayer.subtitle}</p>` : ''}
-                            <div class="prose max-w-none">
-                                <pre class="whitespace-pre-wrap font-sans text-gray-700 leading-relaxed text-lg">${selectedPrayer.content}</pre>
+                            <div class="text-center mb-6">
+                                <div class="text-4xl mb-3 gold-text">✝</div>
+                                <h2 class="text-3xl font-bold text-amber-900 mb-2" style="font-family: 'Cinzel', serif;">${selectedPrayer.title}</h2>
+                                ${selectedPrayer.subtitle ? `<p class="text-amber-700 italic text-lg">${selectedPrayer.subtitle}</p>` : ''}
                             </div>
+                            <div class="border-t-2 border-b-2 border-amber-600 py-6 my-6">
+                                <pre class="whitespace-pre-wrap prayer-content text-center">${selectedPrayer.content}</pre>
+                            </div>
+                            <div class="text-center text-2xl gold-text mt-6">✝</div>
                         </div>
                     </div>
                 `;
             } else {
                 app.innerHTML = `
-                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
-                        <div class="max-w-4xl mx-auto px-4 py-6">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <h1 class="text-2xl font-bold">Konkani Prayers</h1>
-                                    <p class="text-blue-100 text-sm mt-1">Catholic Prayer Collection</p>
-                                </div>
-                                <button onclick="toggleMenu()" class="lg:hidden p-2 hover:bg-white/20 rounded-lg transition">
-                                    ${menuOpen ? '✕' : '☰'}
-                                </button>
+                    <div style="background: linear-gradient(135deg, #450a0a 0%, #7c2d12 100%);" class="text-white shadow-2xl">
+                        <div class="max-w-4xl mx-auto px-4 py-8">
+                            <div class="text-center mb-6">
+                                <div class="cross-icon mb-3">✝</div>
+                                <h1 class="text-4xl font-bold header-title gold-text mb-2">Konkani Prayers</h1>
+                                <p class="text-amber-200 italic">Catholic Prayer Collection</p>
                             </div>
+                            <button onclick="toggleMenu()" class="lg:hidden w-full mt-4 px-4 py-3 bg-amber-600 hover:bg-amber-700 rounded-lg transition font-semibold">
+                                ${menuOpen ? '✕ Close Menu' : '☰ Open Menu'}
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="max-w-4xl mx-auto px-4 py-4">
+                    <div class="max-w-4xl mx-auto px-4 py-6">
                         <div class="relative">
-                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-700" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.35-4.35"></path>
                             </svg>
@@ -367,43 +485,54 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
                                 placeholder="Search prayers..."
                                 value="${searchTerm}"
                                 oninput="updateSearch(this.value)"
-                                class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                class="w-full pl-12 pr-4 py-4 rounded-lg search-input text-lg"
                             />
                         </div>
                     </div>
 
                     <div class="max-w-4xl mx-auto px-4 mb-6 ${menuOpen ? 'block' : 'hidden lg:block'}">
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-3 justify-center">
                             ${categories.map(cat => `
                                 <button
                                     onclick="selectCategory('${cat.id}')"
-                                    class="px-4 py-2 rounded-lg transition ${
-                                        selectedCategory === cat.id
-                                            ? 'bg-blue-600 text-white shadow-md'
-                                            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                                    class="category-btn px-5 py-3 rounded-lg ${
+                                        selectedCategory === cat.id ? 'active' : 'bg-amber-50 text-amber-900 hover:bg-amber-100'
                                     }"
                                 >
-                                    <span class="text-sm font-medium">${cat.name}</span>
+                                    ${cat.name}
                                 </button>
                             `).join('')}
                         </div>
                     </div>
 
-                    <div class="max-w-4xl mx-auto px-4 pb-8">
-                        <div class="grid gap-4">
+                    <div class="max-w-4xl mx-auto px-4 pb-12">
+                        <div class="grid gap-6">
                             ${filteredPrayers.length > 0 ? filteredPrayers.map(prayer => `
                                 <div
                                     onclick="selectPrayer(${prayer.id})"
-                                    class="bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition cursor-pointer border border-gray-100"
+                                    class="prayer-card rounded-lg p-6 cursor-pointer relative"
                                 >
-                                    <h3 class="text-lg font-semibold text-gray-800 mb-2">${prayer.title}</h3>
-                                    ${prayer.subtitle ? `<p class="text-sm text-gray-600 italic mb-2">${prayer.subtitle}</p>` : ''}
-                                    <p class="text-gray-600 text-sm line-clamp-2">${prayer.content}</p>
-                                    <div class="mt-3 text-blue-600 text-sm font-medium">Read more →</div>
+                                    <div class="decorative-corner top-left"></div>
+                                    <div class="decorative-corner top-right"></div>
+                                    <div class="decorative-corner bottom-left"></div>
+                                    <div class="decorative-corner bottom-right"></div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="text-3xl gold-text flex-shrink-0">✝</div>
+                                        <div class="flex-1">
+                                            <h3 class="text-xl font-bold text-amber-900 mb-2" style="font-family: 'Cinzel', serif;">${prayer.title}</h3>
+                                            ${prayer.subtitle ? `<p class="text-sm text-amber-700 italic mb-3">${prayer.subtitle}</p>` : ''}
+                                            <p class="text-amber-800 text-base line-clamp-2 leading-relaxed">${prayer.content}</p>
+                                            <div class="mt-4 text-amber-700 font-semibold flex items-center gap-2">
+                                                <span>Read prayer</span>
+                                                <span>→</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             `).join('') : `
-                                <div class="text-center py-12 text-gray-500">
-                                    <p>No prayers found matching your search.</p>
+                                <div class="text-center py-16 ornate-border rounded-lg">
+                                    <div class="text-5xl gold-text mb-4">✝</div>
+                                    <p class="text-amber-900 text-lg">No prayers found matching your search.</p>
                                 </div>
                             `}
                         </div>
@@ -420,11 +549,13 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
 
         function selectPrayer(id) {
             selectedPrayer = prayers.find(p => p.id === id);
+            window.scrollTo(0, 0);
             render();
         }
 
         function closePrayer() {
             selectedPrayer = null;
+            window.scrollTo(0, 0);
             render();
         }
 
