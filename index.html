@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Konkani Catholic Prayer Collection">
-    <meta name="theme-color" content="#7c2d12">
+    <meta name="theme-color" content="#1e3a8a">
     <title>Konkani Prayers</title>
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,22 +12,23 @@
     <style>
         body {
             font-family: 'Crimson Text', serif;
-            background: linear-gradient(135deg, #450a0a 0%, #7c2d12 50%, #92400e 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
             background-attachment: fixed;
+            min-height: 100vh;
         }
         .ornate-border {
             border: 2px solid #d4af37;
-            background: linear-gradient(to bottom, #fffbeb, #fef3c7);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.5);
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.9);
         }
         .gold-text {
             color: #d4af37;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         .prayer-card {
-            background: linear-gradient(to bottom, #fffef9, #fef9f3);
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
             border: 3px solid #d4af37;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.8);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.9);
             transition: all 0.3s ease;
             position: relative;
         }
@@ -38,51 +39,43 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at top left, rgba(212,175,55,0.1), transparent 50%),
-                        radial-gradient(circle at bottom right, rgba(124,45,18,0.1), transparent 50%);
+            background: radial-gradient(circle at top left, rgba(212,175,55,0.08), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(30,58,138,0.08), transparent 50%);
             pointer-events: none;
         }
-        .prayer-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.8);
+        .prayer-card:active {
+            transform: scale(0.98);
         }
         .cross-icon {
             font-size: 2rem;
             color: #d4af37;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .category-btn {
             font-family: 'Cinzel', serif;
             border: 2px solid #d4af37;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            font-size: 0.7rem;
+            white-space: nowrap;
         }
-        .category-btn:hover {
-            background: #d4af37;
-            color: #7c2d12;
-            transform: scale(1.05);
+        .category-btn:active {
+            transform: scale(0.95);
         }
         .category-btn.active {
             background: linear-gradient(135deg, #d4af37, #f59e0b);
-            color: #450a0a;
+            color: #1e3a8a;
             font-weight: 600;
-            box-shadow: 0 4px 10px rgba(212,175,55,0.5);
+            box-shadow: 0 4px 10px rgba(212,175,55,0.4);
         }
         .header-title {
             font-family: 'Cinzel', serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         .search-input {
             border: 2px solid #d4af37;
-            background: rgba(255,254,249,0.95);
+            background: rgba(255,255,255,0.95);
             font-family: 'Crimson Text', serif;
         }
         .search-input:focus {
@@ -92,8 +85,8 @@
         }
         .decorative-corner {
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             border: 2px solid #d4af37;
         }
         .decorative-corner.top-left {
@@ -121,9 +114,34 @@
             border-top: none;
         }
         .prayer-content {
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            color: #451a03;
+            color: #1e3a8a;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .prayer-content {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .cross-icon {
+                font-size: 1.5rem;
+            }
+            .category-btn {
+                font-size: 0.65rem;
+                padding: 0.5rem 0.75rem;
+            }
+        }
+        
+        /* Ensure text doesn't overflow */
+        * {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
     </style>
 </head>
@@ -255,163 +273,143 @@ Babddeam patkeachem konversanv hanv porratun magtam.`
             {
                 id: 10,
                 category: 'rosary',
-                title: 'Sontosache Mister (Joyful Mysteries)',
-                subtitle: 'Dor Somara ani Sonvarak',
-                content: `1️⃣ Gabriel Boddvean khobor dili  
-Devacho Put Tiche thaim mon'xeaponn ghetolo munn,  
-Ani Ti Ankvar astanam Povitr Atmeache podven ghorbest zali.
+                title: 'Sontosache Mister',
+                subtitle: 'Joyful Mysteries - Dor Somara ani Sonvarak',
+                content: `1️⃣ Gabriel Boddvean khobor dili
+Devacho Put Tiche thaim mon'xeaponn ghetolo munn, Ani Ti Ankvar astanam Povitr Atmeache podven ghorbest zali.
 
-2️⃣ Ankvar Mari ghorbest astana  
-Bhag Izabelik, aple mauxe-bhoinnik bhett korunk geli  
-Ani tiche thaim tin mhoine ravli.
+2️⃣ Ankvar Mari ghorbest astana
+Bhag Izabelik, aple mauxe-bhoinnik bhett korunk geli Ani tiche thaim tin mhoine ravli.
 
-3️⃣ Ankvar Mari Ballka Jezuk porsutt zali  
+3️⃣ Ankvar Mari Ballka Jezuk porsutt zali
 Belea xarant, gorvanchea gottean.
 
-4️⃣ Ankvar Marien Ballka Jezun vhelo  
-Ani bhettoilo Dev-templant and dilo Taka Bhag.  
-Simeanvanchea hatant, zannem taka vollkolo,  
-Sorga ani Sounsaracho Tarok mun.
+4️⃣ Ankvar Marien Ballka Jezun vhelo
+Ani bhettoilo Dev-templant and dilo Taka Bhag. Simeanvanchea hatant, zannem taka vollkolo, Sorga ani Sounsaracho Tarok mun.
 
-5️⃣ Ballok Jezu  
-Porbechea disa sanddlea uprant,  
-Tin dissanim Dev-templant meulo.`
+5️⃣ Ballok Jezu
+Porbechea disa sanddlea uprant, Tin dissanim Dev-templant meulo.`
             },
             {
                 id: 11,
                 category: 'rosary',
-                title: 'Dukhiche Mister (Sorrowful Mysteries)',
-                subtitle: 'Dor Munglara ani Sukrara',
-                content: `1️⃣ Somi Jezu Krist  
-Jetsemanichea molleant magnnem kortannam  
-Rogot humelo amcheam patkam passun.
+                title: 'Dukhiche Mister',
+                subtitle: 'Sorrowful Mysteries - Dor Munglara ani Sukrara',
+                content: `1️⃣ Somi Jezu Krist
+Jetsemanichea molleant magnnem kortannam Rogot humelo amcheam patkam passun.
 
-2️⃣ Pilatachea raz-angnnant  
-Somi Jezu Kristak eka khambeak bandhlo  
-Ani sobar ozar jerbond tacher marlet.
+2️⃣ Pilatachea raz-angnnant
+Somi Jezu Kristak eka khambeak bandhlo Ani sobar ozar jerbond tacher marlet.
 
-3️⃣ Somia Jezuchea mostokar  
+3️⃣ Somia Jezuchea mostokar
 Kantteancho mukutt ghatlo.
 
-4️⃣ Somi Jezu Krist choddlo  
+4️⃣ Somi Jezu Krist choddlo
 Kalvar dongrar gheun aplea khandar to bharadik Khuris.
 
-5️⃣ Somi Jezu Kristak zoddlo Khursar  
-Dogam choram modem sogle sobemazar  
-Ani Ankvar Marieche dixtti mukhar.`
+5️⃣ Somi Jezu Kristak zoddlo Khursar
+Dogam choram modem sogle sobemazar Ani Ankvar Marieche dixtti mukhar.`
             },
             {
                 id: 12,
                 category: 'rosary',
-                title: 'Orkache Mister (Glorious Mysteries)',
-                subtitle: 'Budvar ani Aitar',
-                content: `1️⃣ Somi Jezu Krist  
+                title: 'Orkache Mister',
+                subtitle: 'Glorious Mysteries - Budvar ani Aitar',
+                content: `1️⃣ Somi Jezu Krist
 Aplech podven tisrea disa meleleantlo jivont zalo.
 
-2️⃣ Somi Jezu Krist jivont zatoch  
+2️⃣ Somi Jezu Krist jivont zatoch
 Challis disanim porzollit zaun sorgar choddlo.
 
-3️⃣ Somi Jezu Kristan  
-Sorgar vetoch pattoilo Povitr Atmeak  
-Cenakl mhonnlele suater, zhoi asle Apostl ani Ankvar Mari.
+3️⃣ Somi Jezu Kristan
+Sorgar vetoch pattoilo Povitr Atmeak Cenakl mhonnlele suater, zhoi asle Apostl ani Ankvar Mari.
 
-4️⃣ Somi Jezuchea morna uprant  
+4️⃣ Somi Jezuchea morna uprant
 Ankvar Mariek sobar vorsamnim sorgar vheli.
 
-5️⃣ Bhov Povitr Tritven  
-Ankvar Marie-chea mostokar mukhutt ghatlo  
-Ani sorga ani sonvsarachi Ranni tika keli.`
+5️⃣ Bhov Povitr Tritven
+Ankvar Marie-chea mostokar mukhutt ghatlo Ani sorga ani sonvsarachi Ranni tika keli.`
             },
             {
                 id: 13,
                 category: 'rosary',
-                title: 'Uzvaddache Mister (Luminous Mysteries)',
-                subtitle: 'Brestar',
-                content: `1️⃣ Jordan nodint Povitr Snan  
-Krist udkant dhenvta, ek patok ollkhunk naslolo  
-To amche khatir "patok" zata.
+                title: 'Uzvaddache Mister',
+                subtitle: 'Luminous Mysteries - Brestar',
+                content: `1️⃣ Jordan nodint Povitr Snan
+Krist udkant dhenvta, ek patok ollkhunk naslolo To amche khatir "patok" zata.
 
-2️⃣ Kana ganvant Lognacho Dhobazo  
-Ledna Krist udok sorean bodolta  
-Ani xisanchim kallzam bhavartak ugtim korta.
+2️⃣ Kana ganvant Lognacho Dhobazo
+Ledna Krist udok sorean bodolta Ani xisanchim kallzam bhavartak ugtim korta.
 
-3️⃣ Devachea Rajeachi Porgottnni  
-Aple xikovnne vorvim Jezu ienvchem asa tem Devachem Raj porgot'ta,  
-Ani choloita kheritponnim Kumsarachea Sonskara vorvim.
+3️⃣ Devachea Rajeachi Porgottnni
+Aple xikovnne vorvim Jezu ienvchem asa tem Devachem Raj porgot'ta, Ani choloita kheritponnim Kumsarachea Sonskara vorvim.
 
-4️⃣ Tabor Dongrar Rupantor  
-Dev Bapacho voibhov Putachea mukhamollar porzollta.  
-Apostlank "Taka aikat" munn sangta.
+4️⃣ Tabor Dongrar Rupantor
+Dev Bapacho voibhov Putachea mukhamollar porzollta. Apostlank "Taka aikat" munn sangta.
 
-5️⃣ Misachea Bolidanachi Staphni  
-Zantunt Krist unddeachea ani soreachea rupan  
-Apli kudd ani rogot, jevonn koxem bhettoita.`
+5️⃣ Misachea Bolidanachi Staphni
+Zantunt Krist unddeachea ani soreachea rupan Apli kudd ani rogot, jevonn koxem bhettoita.`
             },
             {
                 id: 14,
                 category: 'special',
                 title: 'Ughddas Dhor (Memorare)',
-                content: `Bhov konvalle Ankvar Marie, ughddas dhor,  
-konn tori tuzo asro gheunk dhanvlolo,  
-Tuzo adhar magunk ani Tuji mozot sodhunk gel'lo,  
-tujea hatantlo alaxiro ghenastana urla munn,  
-kednanch aikunk ieunk na.  
+                content: `Bhov konvalle Ankvar Marie, ughddas dhor, konn tori tuzo asro gheunk dhanvlolo, Tuzo adhar magunk ani Tuji mozot sodhunk gel'lo, tujea hatantlo alaxiro ghenastana urla munn, kednanch aikunk ieunk na.
 
-Hea bhorvanxean ravun,  
-hanv tujea gopant dhanvun ietam,  
-Ankvarinche Ankvari, Maie mhoje,  
-Tuje sorxem hanv ietam,  
-hanv patki ani dukhest,  
-Tuje mukhar ubho (ubhi) ravtam.  
+Hea bhorvanxean ravun, hanv tujea gopant dhanvun ietam, Ankvarinche Ankvari, Maie mhoje, Tuje sorxem hanv ietam, hanv patki ani dukhest, Tuje mukhar ubho (ubhi) ravtam.
 
-Devachea Putache Maie,  
-mhojea magnneanchi beporva korum naka,  
-punn doia korun tem aikun ghe ani folladik kor.  
+Devachea Putache Maie, mhojea magnneanchi beporva korum naka, punn doia korun tem aikun ghe ani folladik kor.
 
 Amen.`
             },
             {
                 id: 15,
                 category: 'litany',
-                title: 'Saibinnichi Ladain (Litany of the Blessed Virgin Mary)',
-                content: `Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor  
-Krista, amchi kaklut kor - Krista, amchi kaklut kor  
-Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor  
-Krista, amkam aik - Krista, doien amkam aik  
+                title: 'Saibinnichi Ladain',
+                subtitle: 'Litany of the Blessed Virgin Mary',
+                content: `Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor
+Krista, amchi kaklut kor - Krista, amchi kaklut kor
+Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor
+Krista, amkam aik - Krista, doien amkam aik
 
-Deva Sorginchea Bapa - Amchi kaklut kor  
-Deva Putra Sonvsarachea Sodvondara - Amchi kaklut kor  
-Deva Spirita Santa - Amchi kaklut kor  
-Santism Trinidadi Ekleach Deva - Amchi kaklut kor  
+Deva Sorginchea Bapa - Amchi kaklut kor
+Deva Putra Sonvsarachea Sodvondara - Amchi kaklut kor
+Deva Spirita Santa - Amchi kaklut kor
+Santism Trinidadi Ekleach Deva - Amchi kaklut kor
 
-Bhagevonti Marie - Amche passun mag  
-Bhagevonti Devache Maie - Amche passun mag  
-Bhagevonti Ankvarinche Ankvari - Amche passun mag  
-Kristache Maie - Amche passun mag  
-Povitr Sobheche Maie - Amche passun mag  
-Dev kurpeche Maie - Amche passun mag  
-Bhov nitoll Maie - Amche passun mag  
+Bhagevonti Marie - Amche passun mag
+Bhagevonti Devache Maie - Amche passun mag
+Bhagevonti Ankvarinche Ankvari - Amche passun mag
+Kristache Maie - Amche passun mag
+Povitr Sobheche Maie - Amche passun mag
+Dev kurpeche Maie - Amche passun mag
+Bhov nitoll Maie - Amche passun mag
 Bhov nirmoll Maie - Amche passun mag`
             },
             {
                 id: 16,
                 category: 'home',
-                title: 'Ochorianche Saibinninchi Bhett (Home Visit)',
-                content: `Noman Saibinn Bhitor Sortanam  
-Eh dulobe ani mogall Maie, ailo amkam baguiacho vell polleunk Tuka amchea ghorant ani mandunk Tuka amche familintli koxi.  
-Ie bore baxen! Amchim kallzam khoxen murgot'tat geta astanam Tuji bhett; eh Boddveanche Rannie, mogache ani povitr borvanxeache Maie, ostream bhitor sodoiv!  
-Ani koso amkam meulo edo voddlo upkar? Koxem Tuka puttvolem, eh Sorguinche Suamini, eunk Tum hea amche itle kirkoll famili modem?  
+                title: 'Ochorianche Saibinninchi Bhett',
+                subtitle: 'Home Visit - Our Lady\'s Image Visiting',
+                content: `Noman Saibinn Bhitor Sortanam
+
+Eh dulobe ani mogall Maie, ailo amkam baguiacho vell polleunk Tuka amchea ghorant ani mandunk Tuka amche familintli koxi.
+
+Ie bore baxen! Amchim kallzam khoxen murgot'tat geta astanam Tuji bhett; eh Boddveanche Rannie, mogache ani povitr borvanxeache Maie, ostream bhitor sodoiv!
+
+Ani koso amkam meulo edo voddlo upkar? Koxem Tuka puttvolem, eh Sorguinche Suamini, eunk Tum hea amche itle kirkoll famili modem?
+
 Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka assa, amcher tuzo axirvad ghalunk ani pettounk amchim kallzam mogacheam kirnanim, jim bhair sortat Tujeam atanchim.`
             }
         ];
 
         const categories = [
-            { id: 'all', name: 'All Prayers' },
-            { id: 'daily', name: 'Daily Prayers' },
-            { id: 'rosary', name: 'Rosary Mysteries' },
-            { id: 'special', name: 'Special Prayers' },
+            { id: 'all', name: 'All' },
+            { id: 'daily', name: 'Daily' },
+            { id: 'rosary', name: 'Rosary' },
+            { id: 'special', name: 'Special' },
             { id: 'litany', name: 'Litany' },
-            { id: 'home', name: 'Home Blessings' }
+            { id: 'home', name: 'Home' }
         ];
 
         let selectedCategory = 'all';
@@ -431,52 +429,52 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
             
             if (selectedPrayer) {
                 app.innerHTML = `
-                    <div style="background: linear-gradient(135deg, #450a0a 0%, #7c2d12 100%);" class="text-white shadow-2xl">
-                        <div class="max-w-4xl mx-auto px-4 py-8 text-center">
-                            <div class="cross-icon mb-3">✝</div>
-                            <h1 class="text-3xl font-bold header-title gold-text">Konkani Prayers</h1>
-                            <p class="text-amber-200 text-sm mt-2 italic">Catholic Prayer Collection</p>
+                    <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);" class="text-white shadow-2xl">
+                        <div class="max-w-3xl mx-auto px-3 py-6 text-center">
+                            <div class="cross-icon mb-2">✝</div>
+                            <h1 class="text-2xl sm:text-3xl font-bold header-title gold-text">Konkani Prayers</h1>
+                            <p class="text-blue-200 text-xs sm:text-sm mt-1 italic">Catholic Prayer Collection</p>
                         </div>
                     </div>
-                    <div class="max-w-4xl mx-auto px-4 py-8">
-                        <div class="prayer-card rounded-lg p-8 relative">
+                    <div class="max-w-3xl mx-auto px-3 py-4 sm:py-6">
+                        <div class="prayer-card rounded-lg p-4 sm:p-6 relative">
                             <div class="decorative-corner top-left"></div>
                             <div class="decorative-corner top-right"></div>
                             <div class="decorative-corner bottom-left"></div>
                             <div class="decorative-corner bottom-right"></div>
-                            <button onclick="closePrayer()" class="mb-6 px-4 py-2 rounded border-2 border-amber-700 text-amber-900 hover:bg-amber-700 hover:text-white transition font-semibold">
-                                ← Back to prayers
+                            <button onclick="closePrayer()" class="mb-4 px-3 py-2 text-sm rounded border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white transition font-semibold">
+                                ← Back
                             </button>
-                            <div class="text-center mb-6">
-                                <div class="text-4xl mb-3 gold-text">✝</div>
-                                <h2 class="text-3xl font-bold text-amber-900 mb-2" style="font-family: 'Cinzel', serif;">${selectedPrayer.title}</h2>
-                                ${selectedPrayer.subtitle ? `<p class="text-amber-700 italic text-lg">${selectedPrayer.subtitle}</p>` : ''}
+                            <div class="text-center mb-4">
+                                <div class="text-2xl sm:text-3xl mb-2 gold-text">✝</div>
+                                <h2 class="text-xl sm:text-2xl font-bold text-blue-900 mb-1" style="font-family: 'Cinzel', serif;">${selectedPrayer.title}</h2>
+                                ${selectedPrayer.subtitle ? `<p class="text-blue-700 italic text-sm sm:text-base">${selectedPrayer.subtitle}</p>` : ''}
                             </div>
-                            <div class="border-t-2 border-b-2 border-amber-600 py-6 my-6">
-                                <pre class="whitespace-pre-wrap prayer-content text-center">${selectedPrayer.content}</pre>
+                            <div class="border-t-2 border-b-2 border-blue-300 py-4 my-4">
+                                <div class="prayer-content px-2">${selectedPrayer.content}</div>
                             </div>
-                            <div class="text-center text-2xl gold-text mt-6">✝</div>
+                            <div class="text-center text-xl sm:text-2xl gold-text mt-4">✝</div>
                         </div>
                     </div>
                 `;
             } else {
                 app.innerHTML = `
-                    <div style="background: linear-gradient(135deg, #450a0a 0%, #7c2d12 100%);" class="text-white shadow-2xl">
-                        <div class="max-w-4xl mx-auto px-4 py-8">
-                            <div class="text-center mb-6">
-                                <div class="cross-icon mb-3">✝</div>
-                                <h1 class="text-4xl font-bold header-title gold-text mb-2">Konkani Prayers</h1>
-                                <p class="text-amber-200 italic">Catholic Prayer Collection</p>
+                    <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);" class="text-white shadow-2xl">
+                        <div class="max-w-3xl mx-auto px-3 py-6">
+                            <div class="text-center mb-4">
+                                <div class="cross-icon mb-2">✝</div>
+                                <h1 class="text-2xl sm:text-3xl font-bold header-title gold-text mb-1">Konkani Prayers</h1>
+                                <p class="text-blue-200 text-xs sm:text-sm italic">Catholic Prayer Collection</p>
                             </div>
-                            <button onclick="toggleMenu()" class="lg:hidden w-full mt-4 px-4 py-3 bg-amber-600 hover:bg-amber-700 rounded-lg transition font-semibold">
-                                ${menuOpen ? '✕ Close Menu' : '☰ Open Menu'}
+                            <button onclick="toggleMenu()" class="lg:hidden w-full mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition font-semibold text-sm">
+                                ${menuOpen ? '✕ Close' : '☰ Menu'}
                             </button>
                         </div>
                     </div>
                     
-                    <div class="max-w-4xl mx-auto px-4 py-6">
+                    <div class="max-w-3xl mx-auto px-3 py-3">
                         <div class="relative">
-                            <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-700" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-700" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.35-4.35"></path>
                             </svg>
@@ -485,18 +483,18 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
                                 placeholder="Search prayers..."
                                 value="${searchTerm}"
                                 oninput="updateSearch(this.value)"
-                                class="w-full pl-12 pr-4 py-4 rounded-lg search-input text-lg"
+                                class="w-full pl-10 pr-3 py-3 rounded-lg search-input text-base"
                             />
                         </div>
                     </div>
 
-                    <div class="max-w-4xl mx-auto px-4 mb-6 ${menuOpen ? 'block' : 'hidden lg:block'}">
-                        <div class="flex flex-wrap gap-3 justify-center">
+                    <div class="max-w-3xl mx-auto px-3 mb-4 ${menuOpen ? 'block' : 'hidden lg:block'}">
+                        <div class="flex flex-wrap gap-2 justify-center">
                             ${categories.map(cat => `
                                 <button
                                     onclick="selectCategory('${cat.id}')"
-                                    class="category-btn px-5 py-3 rounded-lg ${
-                                        selectedCategory === cat.id ? 'active' : 'bg-amber-50 text-amber-900 hover:bg-amber-100'
+                                    class="category-btn px-3 py-2 rounded-lg ${
+                                        selectedCategory === cat.id ? 'active' : 'bg-white text-blue-900 hover:bg-blue-50'
                                     }"
                                 >
                                     ${cat.name}
@@ -505,24 +503,24 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
                         </div>
                     </div>
 
-                    <div class="max-w-4xl mx-auto px-4 pb-12">
-                        <div class="grid gap-6">
+                    <div class="max-w-3xl mx-auto px-3 pb-8">
+                        <div class="grid gap-3">
                             ${filteredPrayers.length > 0 ? filteredPrayers.map(prayer => `
                                 <div
                                     onclick="selectPrayer(${prayer.id})"
-                                    class="prayer-card rounded-lg p-6 cursor-pointer relative"
+                                    class="prayer-card rounded-lg p-4 cursor-pointer relative"
                                 >
                                     <div class="decorative-corner top-left"></div>
                                     <div class="decorative-corner top-right"></div>
                                     <div class="decorative-corner bottom-left"></div>
                                     <div class="decorative-corner bottom-right"></div>
-                                    <div class="flex items-start gap-4">
-                                        <div class="text-3xl gold-text flex-shrink-0">✝</div>
-                                        <div class="flex-1">
-                                            <h3 class="text-xl font-bold text-amber-900 mb-2" style="font-family: 'Cinzel', serif;">${prayer.title}</h3>
-                                            ${prayer.subtitle ? `<p class="text-sm text-amber-700 italic mb-3">${prayer.subtitle}</p>` : ''}
-                                            <p class="text-amber-800 text-base line-clamp-2 leading-relaxed">${prayer.content}</p>
-                                            <div class="mt-4 text-amber-700 font-semibold flex items-center gap-2">
+                                    <div class="flex items-start gap-3">
+                                        <div class="text-2xl gold-text flex-shrink-0">✝</div>
+                                        <div class="flex-1 min-w-0">
+                                            <h3 class="text-base sm:text-lg font-bold text-blue-900 mb-1" style="font-family: 'Cinzel', serif;">${prayer.title}</h3>
+                                            ${prayer.subtitle ? `<p class="text-xs sm:text-sm text-blue-700 italic mb-2">${prayer.subtitle}</p>` : ''}
+                                            <p class="text-blue-800 text-sm leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${prayer.content.substring(0, 80)}...</p>
+                                            <div class="mt-2 text-blue-600 font-semibold flex items-center gap-1 text-sm">
                                                 <span>Read prayer</span>
                                                 <span>→</span>
                                             </div>
@@ -530,9 +528,9 @@ Ah! Ami zannaum bore baxen Tum aileai munn Tujea bolleponnan ani khoxen ji Tuka 
                                     </div>
                                 </div>
                             `).join('') : `
-                                <div class="text-center py-16 ornate-border rounded-lg">
-                                    <div class="text-5xl gold-text mb-4">✝</div>
-                                    <p class="text-amber-900 text-lg">No prayers found matching your search.</p>
+                                <div class="text-center py-12 ornate-border rounded-lg">
+                                    <div class="text-4xl gold-text mb-3">✝</div>
+                                    <p class="text-blue-900">No prayers found.</p>
                                 </div>
                             `}
                         </div>
