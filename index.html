@@ -31,6 +31,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.9);
             transition: all 0.3s ease;
             position: relative;
+            margin-bottom: 0.5rem;
         }
         .prayer-card::before {
             content: '';
@@ -463,6 +464,65 @@ Amen.`
             },
             {
                 id: 16,
+                category: 'special',
+                title: 'Mhojea Sangata Rav Somia',
+                subtitle: 'Prayer after Communion by Padre Pio',
+                content: `* Mhojea sangata rav, Somia, Hanv Tujer visor ghalinam zavunk Tum mhaka khoreanich zai, Sobar pautt Tuka soddun ditam mhonn Tum zanna.
+
+* Mhojea sangata rav, Somia, kiteak hanv oskot ani porot poddonam zavunk mhaka Tuji ghottai zai.
+
+* Mhojea sangata rav, Somia, kiteak Tum mhojem jivit ani Tuje vinnem mhaka urba nam.
+
+* Mhojea sangata rav, Somia, kiteam Tum mhozo uzvadd ani Tuje vinnem hanv kallokhant astolom.
+
+* Tuji khuxi mhaka dakhounk, Mhojea sangata rav, Somia.
+
+* Tuzo tallo aikunk ani Tuzo pattlav korunk, Mhojea sangata rav, Somia.
+
+* Mhojea sangata rav, Somia, Tuzo chodd mog korunk ani Tuje borobor ravunk hanv aumddetam.
+
+* Tuka visvaxi ravunk zai zalear, Mhojea sangata rav, Somia.
+
+* Mhojea sangata rav, Somia, mhozo atmo oskot dekhun Tuka bhuzvonnditoli suvat ani mogacho ghontter to zaum.
+
+* Mhojea sangata rav, Somia, kallav zata, dis dharer poddtta ani jivit soron veta, moronn, zoddtti ani sasnnik jivit lagim yeta. Mhojem boll novsorunk ghoroz kiteak mhoje yatrent thambonam zavunk mhaka Tuji ghoroz. Kallav zata ani moron lagim yeta. Kallokh, tallnni, xellmollem jivit, khuris, dukh, hachi mhaka bhirant dista. Hea bhirankull ratrik, Mhaka Tuzoch sangat zai.
+
+* Aiz ratik mhojea sangata Tum rav, Somia, Jivitantlea sogllea vaitt-vignna vellar Tum mhaka zai.
+
+* Zoxe porim xisamnim unddeache moddnnent Tuka vollkholo tech porim mhaka Tuka vollkhunk zai, Krist Prosad zaumdi uzvadd zo kallokh poissaita, boll zache udexim mhoji vadd zata, mhojea kallzachi khori khuxalkai.
+
+* Mhojea sangata rav, Somia, kiteak mhojea mornachea vellar, Tuka chittkun ravunk mhaka zai, ekvottan nhoi zalear kurpen ani mogan.
+
+* Mhojea sangata rav, Somia, deivik bhuzzvonn hanv magonam kiteak taka hanv vorto nhoi punn, Tujea asnneachem dennem hanv magtam.
+
+* Mhojea sangata rav, Somia, fokot Tukach hanv sodtam, Tuzo mog, Tuji kurpa, Tuji khuxi, Tujem kalliz, Tuzo atmo, kiteak hanv Tuzo mog kortam ani kainch inam hanv magonam, punn fokot Tuzoch chodd ani chodd mog korunk sodtam.
+
+* Khorea mogan, hea sonvsarant astanam sogllea mhojea kallzant thaun hanv Tuzo mog kortolom ani uprant sasnnank Tuzo sopurnayen mog kortolom. AMEN.
+
+- Padre Pio Kopel - Moddi Navelim anche mhozotin`
+            },
+            {
+                id: 17,
+                category: 'special',
+                title: 'Kristachea Otmea',
+                subtitle: 'Gaionancho Jhelo D-25',
+                content: `1. Kristachea Otmea, mhaka povitr kor!
+Kristache Kuddi, mhojem taronn kor!
+Kristachea Rogta, mhaka dhados kor!
+Nhannoi mhaka udkan Koddvollachea!
+
+2. Povitr Koxttamno, mhaka ghott korat!
+Tum, borvea Jezu, chitan mhaka aik!
+Tujeam ghaiamnim Tum mhaka lipoi!
+Vegllo hanv sorunk kodinch dium naka!
+
+3. Vaitt dusmanantlo Tum mhaka vattai!
+mornnachea vellar Tum mhaka apoi!
+Tuje sorxem ieunk Tum mhaka formai!
+Bhoktam sangatim Tuka vakhanncheak!`
+            },
+            {
+                id: 18,
                 category: 'home',
                 title: 'Ochorianche Saibinninchi Bhett',
                 subtitle: 'Home Visit - Our Lady\'s Image Visiting',
@@ -676,7 +736,7 @@ Eh Morie patka vinnem sambaulole, vinot kor amche passun je Tuka prat'taum.`
                     </div>
 
                     <div class="max-w-3xl mx-auto px-3 pb-8">
-                        <div class="grid gap-3">
+                        <div class="grid gap-4">
                             ${filteredPrayers.length > 0 ? filteredPrayers.map(prayer => `
                                 <div
                                     onclick="selectPrayer(${prayer.id})"
