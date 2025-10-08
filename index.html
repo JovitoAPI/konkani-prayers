@@ -514,7 +514,7 @@ Oxem zaum.
 
 BHETT ZONN EKLEACHI
 
-Anga assam dimbi ghalun Tuje Povitr imaji mukhar, eh sodoivi Ankvari bhettounk Tuka anink ek pautt mojem kirkoll kalliz.
+Anga ssam dimbi ghalun Tuje Povitr imaji mukhar, eh sodoivi Ankvari bhettounk Tuka anink ek pautt mojem kirkoll kalliz.
 
 Aum vortoutam Tuzo ani tuzoch aum zaunk sodtam, aum jieunk sodtam fokot tuzo mog korun sogglea mojea kallzachea bollan.
 
@@ -620,7 +620,10 @@ Eh Morie patka vinnem sambaulole, vinot kor amche passun je Tuka prat'taum.`
                                 ${selectedPrayer.subtitle ? `<p class="text-blue-700 italic text-sm sm:text-base">${selectedPrayer.subtitle}</p>` : ''}
                             </div>
                             <div class="border-t-2 border-b-2 border-blue-300 py-4 my-4">
-                                <div class="prayer-content px-2">${selectedPrayer.content}</div>
+                                ${selectedPrayer.id === 15 ? 
+                                    `<div class="px-2">${selectedPrayer.content}</div>` : 
+                                    `<div class="prayer-content px-2">${selectedPrayer.content}</div>`
+                                }
                             </div>
                             <div class="text-center text-xl sm:text-2xl gold-text mt-4">✝</div>
                         </div>
