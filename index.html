@@ -514,7 +514,7 @@ Oxem zaum.
 
 BHETT ZONN EKLEACHI
 
-Anga ssam dimbi ghalun Tuje Povitr imaji mukhar, eh sodoivi Ankvari bhettounk Tuka anink ek pautt mojem kirkoll kalliz.
+Anga assam dimbi ghalun Tuje Povitr imaji mukhar, eh sodoivi Ankvari bhettounk Tuka anink ek pautt mojem kirkoll kalliz.
 
 Aum vortoutam Tuzo ani tuzoch aum zaunk sodtam, aum jieunk sodtam fokot tuzo mog korun sogglea mojea kallzachea bollan.
 
@@ -691,7 +691,7 @@ Eh Morie patka vinnem sambaulole, vinot kor amche passun je Tuka prat'taum.`
                                         <div class="flex-1 min-w-0">
                                             <h3 class="text-base sm:text-lg font-bold text-blue-900 mb-1" style="font-family: 'Cinzel', serif;">${prayer.title}</h3>
                                             ${prayer.subtitle ? `<p class="text-xs sm:text-sm text-blue-700 italic mb-2">${prayer.subtitle}</p>` : ''}
-                                            <p class="text-blue-800 text-sm leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${prayer.content.substring(0, 80)}...</p>
+                                            <p class="text-blue-800 text-sm leading-relaxed" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${prayer.id === 15 ? 'Dhonia, amchi kaklut kor - Dhonia, amchi kaklut kor...' : prayer.content.substring(0, 80) + '...'}</p>
                                             <div class="mt-2 text-blue-600 font-semibold flex items-center gap-1 text-sm">
                                                 <span>Read prayer</span>
                                                 <span>→</span>
