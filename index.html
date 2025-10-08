@@ -123,6 +123,30 @@
             max-width: 100%;
         }
         
+        .litany-table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .litany-row {
+            display: table-row;
+        }
+        
+        .litany-cell-left {
+            display: table-cell;
+            padding: 0.25rem 0.5rem 0.25rem 0;
+            vertical-align: top;
+        }
+        
+        .litany-cell-right {
+            display: table-cell;
+            padding: 0.25rem 0 0.25rem 0.5rem;
+            text-align: left;
+            white-space: nowrap;
+            vertical-align: top;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 640px) {
             .prayer-content {
@@ -367,73 +391,75 @@ Amen.`
                 category: 'litany',
                 title: 'Saibinnichi Ladain',
                 subtitle: 'Litany of the Blessed Virgin Mary',
-                content: `Dhonia, amchi kaklut kor                      - Dhonia, amchi kaklut kor
-Krista, amchi kaklut kor                       - Krista, amchi kaklut kor
-Dhonia, amchi kaklut kor                       - Dhonia, amchi kaklut kor
-Krista, amkam aik                              - Krista, doien amkam aik
-
-Deva Sorginchea Bapa                           - Amchi kaklut kor
-Deva Putra Sonvsarachea Sodvondara             "
-Deva Spirita Santa                             "
-Santism Trinidadi Ekleach Deva                 "
-
-Bhagevonti Marie                               - Amche passun mag
-Bhagevonti Devache Maie                        "
-Bhagevonti Ankvarinche Ankvari                 "
-Kristache Maie                                 "
-Povitr Sobheche Maie                           "
-Dev kurpeche Maie                              "
-Bhov nitoll Maie                               "
-Bhov nirmoll Maie                              "
-Boxttonaslele Maie                             "
-Khot lagonk naslele Maie                       "
-Mogall Maie                                    "
-Ojapanche Maie                                 "
-Bore budiche Maie                              "
-Rochnnarache Maie                              "
-Sodvonddarache Maie                            "
-Bhov xanne Ankvari                             "
-Man favo aslele Ankvari                        "
-Onod favo aslele Ankvari                       "
-Podvedar Ankvari                               "
-Kaklutsar Ankvari                              "
-Visvaxi Ankvari                                "
-Nitichea Arxea                                 "
-Zannvaechea Thikanna                           "
-Amchea Sontosachea prestava                    "
-Dev Kurpechea aidona                           "
-Manachea aidona                                "
-Ut'tom Devosavanchea aidona                    "
-Guttachea Roza                                 "
-Davidache Torri                                "
-Marfinche Torri                                "
-Bhangarachea Ghora                             "
-Ekvottachea Arka                               "
-Sorgachea Darvonttea                           "
-Fanteavelea Noketra                            "
-Piddevantanche Bholaike                        "
-Patkeanchea Asrea                              "
-Dukhestanche Buzvondare                        "
-Kristavanchea Alaxirea                         "
-Bhoddveanche Rannie                            "
-Patriarkanche Rannie                           "
-Profetanche Rannie                             "
-Apostlanche Rannie                             "
-Martirinche Rannie                             "
-Konfessoranche Rannie                          "
-Sogleam Bhoktanche Rannie                      "
-Soimbachea khotavinn ghorb somboulele Rannie   "
-Kuddi-otmea soit sorgar vhelele Rannie         "
-Bhov Povitr Ruzaiche Rannie                    "
-Kuttumbache Rannie                             "
-Sovostaieche Rannie                            "
-
-Devache Xellie Sonvsarachem Pap kaddtele      - Amkam bhogos Saiba
-Devache Xellie Sonvsarachem Pap kaddtele      - Doien amkam aik Saiba
-Devache Xellie Sonvsarachem Pap kaddtele      - Amchi kaklut kor
-
-O Bhov Povitr Ruzaiche Rannie, Amche passun mag
-Z Kristacheo bhassaunneo amkam favo zauncheak`
+                content: `<div class="litany-table">
+<div class="litany-row"><div class="litany-cell-left">Dhonia, amchi kaklut kor</div><div class="litany-cell-right">- Dhonia, amchi kaklut kor</div></div>
+<div class="litany-row"><div class="litany-cell-left">Krista, amchi kaklut kor</div><div class="litany-cell-right">- Krista, amchi kaklut kor</div></div>
+<div class="litany-row"><div class="litany-cell-left">Dhonia, amchi kaklut kor</div><div class="litany-cell-right">- Dhonia, amchi kaklut kor</div></div>
+<div class="litany-row"><div class="litany-cell-left">Krista, amkam aik</div><div class="litany-cell-right">- Krista, doien amkam aik</div></div>
+<div class="litany-row"><div class="litany-cell-left">&nbsp;</div><div class="litany-cell-right">&nbsp;</div></div>
+<div class="litany-row"><div class="litany-cell-left">Deva Sorginchea Bapa</div><div class="litany-cell-right">- Amchi kaklut kor</div></div>
+<div class="litany-row"><div class="litany-cell-left">Deva Putra Sonvsarachea Sodvondara</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Deva Spirita Santa</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Santism Trinidadi Ekleach Deva</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">&nbsp;</div><div class="litany-cell-right">&nbsp;</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhagevonti Marie</div><div class="litany-cell-right">- Amche passun mag</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhagevonti Devache Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhagevonti Ankvarinche Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Kristache Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Povitr Sobheche Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Dev kurpeche Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhov nitoll Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhov nirmoll Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Boxttonaslele Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Khot lagonk naslele Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Mogall Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Ojapanche Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bore budiche Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Rochnnarache Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Sodvonddarache Maie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhov xanne Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Man favo aslele Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Onod favo aslele Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Podvedar Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Kaklutsar Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Visvaxi Ankvari</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Nitichea Arxea</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Zannvaechea Thikanna</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Amchea Sontosachea prestava</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Dev Kurpechea aidona</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Manachea aidona</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Ut'tom Devosavanchea aidona</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Guttachea Roza</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Davidache Torri</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Marfinche Torri</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhangarachea Ghora</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Ekvottachea Arka</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Sorgachea Darvonttea</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Fanteavelea Noketra</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Piddevantanche Bholaike</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Patkeanchea Asrea</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Dukhestanche Buzvondare</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Kristavanchea Alaxirea</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhoddveanche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Patriarkanche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Profetanche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Apostlanche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Martirinche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Konfessoranche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Sogleam Bhoktanche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Soimbachea khotavinn ghorb somboulele Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Kuddi-otmea soit sorgar vhelele Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Bhov Povitr Ruzaiche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Kuttumbache Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">Sovostaieche Rannie</div><div class="litany-cell-right">"</div></div>
+<div class="litany-row"><div class="litany-cell-left">&nbsp;</div><div class="litany-cell-right">&nbsp;</div></div>
+<div class="litany-row"><div class="litany-cell-left">Devache Xellie Sonvsarachem Pap kaddtele</div><div class="litany-cell-right">- Amkam bhogos Saiba</div></div>
+<div class="litany-row"><div class="litany-cell-left">Devache Xellie Sonvsarachem Pap kaddtele</div><div class="litany-cell-right">- Doien amkam aik Saiba</div></div>
+<div class="litany-row"><div class="litany-cell-left">Devache Xellie Sonvsarachem Pap kaddtele</div><div class="litany-cell-right">- Amchi kaklut kor</div></div>
+<div class="litany-row"><div class="litany-cell-left">&nbsp;</div><div class="litany-cell-right">&nbsp;</div></div>
+<div class="litany-row"><div class="litany-cell-left">O Bhov Povitr Ruzaiche Rannie,</div><div class="litany-cell-right">Amche passun mag</div></div>
+<div class="litany-row"><div class="litany-cell-left">Z Kristacheo bhassaunneo amkam favo zauncheak</div><div class="litany-cell-right"></div></div>
+</div>`
             },
             {
                 id: 16,
